@@ -99,6 +99,7 @@ main{
     text-transform: uppercase;
     letter-spacing: 0.6rem;
     font-size: 0.95rem;
+    line-height: 1.8;
 }
 .about img{
     max-width: 400px;
@@ -109,8 +110,9 @@ main{
 }
 footer{
     text-align: center;
-    color: var(--black);
-    padding: 1rem;
+    color: var(--dark-gray);
+    padding: 2rem;
+    background-color: var(--black);
 }
 .btn{
     position: relative;
@@ -136,9 +138,9 @@ footer{
     
   }
 @media screen and (max-width:49.99em){
-    body{
+    /* body{
         background-color: aqua;
-    }
+    } */
     .about{
         flex-direction: column;
     }
