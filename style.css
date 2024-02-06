@@ -1,0 +1,168 @@
+*,*::before,*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --dark-gray: #a1a1a1;
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --dark-gray-2: hsl(0, 0%, 27%);
+}
+body{
+    font-family: 'League Spartan', sans-serif;
+    max-width: 1600px;
+    color: var(--dark-gray);
+    margin-inline:auto;
+}
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 1.4rem;
+}
+li{
+    list-style: none;
+}
+
+
+header{
+    position: absolute;
+    padding: 3rem 2rem 2rem ;
+    z-index: 999;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    width: 500px;
+}
+header a{
+    color: var(--white);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+.carousel-container{
+    display: flex;
+    align-items: center;
+   position: relative;
+   height: 70vh;
+}
+.carousel-container .carousel-image{
+    flex:1 0 3rem ;
+   background-image: url('images/desktop-image-hero-1.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   max-width: 700px;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-content{
+    padding:3rem 2rem;
+    max-width: 530px;
+    margin-inline:auto;
+    position: relative;
+    flex:1 0 5rem ;
+}
+.carousel-content h1{
+    color: var(--black);
+    font-weight: 700;
+    font-size: 2.7rem;
+}
+.carousel-container p,
+.about-content p{
+    margin: 1.3rem 0;
+    line-height: 1.5;
+}
+.carousel-container a{
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+}
+.carousel-container a img{
+    filter: brightness(0) saturate(100%) invert(69%) sepia(4%) saturate(14%) hue-rotate(13deg) brightness(93%) contrast(86%);
+}
+.about{
+    display: flex;
+    justify-content: space-between;
+}.about-content{
+    padding:3rem 2rem 2rem;
+    flex:1 0 5rem;
+}
+.about-content h2{
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    font-size: 0.95rem;
+}
+.about img{
+    max-width: 400px;
+    flex:1 0 10rem;
+    width: 100%;
+    /* height: 100%; */
+    display: block;
+}
+footer{
+    text-align: center;
+    color: var(--black);
+    padding: 1rem;
+}
+.btn{
+    position: relative;
+    display: flex;
+    width: 100px;
+    left: 100%;
+    bottom: calc(-100% - -12.3%);
+}
+.btn button{
+    background-color: var(--black);
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+}
+@media screen and (min-width: 50em) and (max-width: 70em) {
+    body {
+      background-color: purple;
+    }
+    .about img{
+        max-width: 220px;
+    }
+    
+  }
+@media screen and (max-width:49.99em){
+    body{
+        background-color: aqua;
+    }
+    .about{
+        flex-direction: column;
+    }
+    .about img{
+        max-width: 100%;
+    }
+    .carousel-container{
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    .carousel-container .carousel-image{
+        width: 100%;
+        height: 500px;
+        flex: none;
+        max-width: 150%;
+        background-size: fill;
+    }
+    .btn{
+        display: none;
+    }
+}
+  /* @media screen and (min-width: 50em) , screen and (max-height: 100%){
+    .carousel-image .btn{
+        bottom: calc(-100% - -13%);
+    }
+  } */
