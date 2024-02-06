@@ -54,15 +54,16 @@ main{
 }
 .carousel-container .carousel-image{
     flex:1 0 3rem ;
-   background-image: url('images/desktop-image-hero-1.jpg');
-   background-repeat: no-repeat;
-   background-size: cover;
-   max-width: 700px;
-    min-height: 100%;
+    max-width: 50em;
+    height: 100%;
+    position: relative;
+}
+.carousel-image .img{
+    aspect-ratio:2 / 1;
     width: 100%;
     height: 100%;
-}
 
+}
 .carousel-content{
     padding:3rem 2rem;
     max-width: 530px;
@@ -83,8 +84,16 @@ main{
 .carousel-container a{
     text-transform: uppercase;
     letter-spacing: 0.6rem;
+    color: var(--dark-gray-2);
+    transition: all 0.5s ease-in-out;
+}
+.carousel-container a:hover{
+    color: var(--dark-gray);
 }
 .carousel-container a img{
+    transition: all 0.5s ease-in-out;
+}
+.carousel-container a:hover img{
     filter: brightness(0) saturate(100%) invert(69%) sepia(4%) saturate(14%) hue-rotate(13deg) brightness(93%) contrast(86%);
 }
 .about{
@@ -93,7 +102,7 @@ main{
 }
 .about-content{
     padding:3rem 2rem 2rem;
-    /* flex:1 0 5rem; */
+
 }
 .about-content h2{
     color: var(--black);
@@ -104,9 +113,7 @@ main{
 }
 .about img{
     max-width: 400px;
-    /* flex:1 0 10rem; */
     width: 100%;
-    /* height: 100%; */
     display: block;
 }
 footer{
@@ -120,7 +127,7 @@ footer{
     display: flex;
     width: 100px;
     left: 100%;
-    bottom: calc(-100% - -12.3%);
+    bottom: 63.5px;
 }
 .btn button{
     background-color: var(--black);
@@ -128,20 +135,18 @@ footer{
     width: 100%;
     padding: 1rem;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
 }
-@media screen and (min-width: 50em) and (max-width: 70em) {
-    body {
-      background-color: purple;
-    }
+.btn button:hover{
+    background-color: var(--dark-gray);
+}
+@media screen and (min-width: 55em) and (max-width: 70em) {
     .about img{
         max-width: 220px;
     }
     
   }
-@media screen and (max-width:49.99em){
-    /* body{
-        background-color: aqua;
-    } */
+@media screen and (max-width:55em){
     .about{
         flex-direction: column;
     }
@@ -153,29 +158,19 @@ footer{
         width: 100%;
         height: 100%;
     }
-    .carousel-container .carousel-image{
-        width: 100%;
-        height: 500px;
-        flex: none;
-        max-width: 150%;
-        background-size: fill;
+    .carousel-image img{
+        position: relative;
     }
     .btn{
-        display: none;
+        position: relative;
+        left:0;
     }
     .about-content,.carousel-content{
-        padding-inline: 1.4rem;
+        padding-inline: 1.9rem;
      
     }
-    .carousel-content h1{
-        
-    }
+
     .about-content h2{
         letter-spacing: 0.5rem;
     }
 }
-  /* @media screen and (min-width: 50em) , screen and (max-height: 100%){
-    .carousel-image .btn{
-        bottom: calc(-100% - -13%);
-    }
-  } */
