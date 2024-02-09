@@ -14,6 +14,7 @@ body{
     max-width: 1600px;
     color: var(--dark-gray);
     margin-inline:auto;
+    overflow-x: hidden;
 }
 a{
     text-decoration: none;
@@ -34,12 +35,14 @@ header{
     padding: 3rem 2rem 2rem ;
     z-index: 999;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     max-width: 100%;
-    width: 500px;
+    width: 600px;
 }
 header a{
-    color: var(--white);
+    /* color: var(--white); */
+    font-size: 1.1rem;
 }
 
 main{
@@ -49,8 +52,7 @@ main{
 .carousel-container{
     display: flex;
     align-items: center;
-   position: relative;
-   height: 70vh;
+    position: relative;
 }
 .carousel-container .carousel-image{
     flex:1 0 3rem ;
@@ -127,7 +129,7 @@ footer{
     display: flex;
     width: 100px;
     left: 100%;
-    bottom: 63.5px;
+    bottom:60px;
 }
 .btn button{
     background-color: var(--black);
@@ -140,12 +142,75 @@ footer{
 .btn button:hover{
     background-color: var(--dark-gray);
 }
+.images{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+ }
+ .images img{
+     width: 100%;
+     height: 100%;
+    position: absolute;
+    display: block;
+ }
+ .showNow span{
+    position: relative;
+ }
+.showNow span::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:-0.5rem;
+    height:1px;
+    transform: scaleX(0);
+    border-radius: 10px;
+    transform-origin: right;
+    z-index: -1;
+    transition: transform 0.3s ease;
+ }
+.showNow span::before{
+    background-color: var(--black);
+}
+.showNow:hover span::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.showNow:hover img{
+    animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+.images img:not(.active), .carousel-content .content:not(.active){
+    top: 0;
+    left: -100%;
+}
+
 @media screen and (min-width: 55em) and (max-width: 70em) {
     .about img{
         max-width: 220px;
     }
     
   }
+@media screen and (min-width:55em) {
+    .carousel-container{
+        height: 70vh;
+    }
+    header{
+        justify-content: space-evenly;
+    }
+    .hamburger-menu{
+        display: none;
+    }
+    .flex a{
+        color: var(--white);
+    }
+}
 @media screen and (max-width:55em){
     .about{
         flex-direction: column;
@@ -155,11 +220,8 @@ footer{
     }
     .carousel-container{
         flex-direction: column;
-        width: 100%;
-        height: 100%;
-    }
-    .carousel-image img{
-        position: relative;
+        align-items: stretch;
+
     }
     .btn{
         position: relative;
@@ -167,10 +229,230 @@ footer{
     }
     .about-content,.carousel-content{
         padding-inline: 1.9rem;
-     
     }
-
+    .images{
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        min-height: 358px;
+    }
     .about-content h2{
         letter-spacing: 0.5rem;
     }
+    
+}
+@media (max-width:36em){
+    
+    .logo{
+        margin-inline: auto;
+        width: 90px;
+    }
+    
+    .logo svg{
+        width: 29px;
+    }
+    nav{
+        position: absolute;
+        padding: 3rem 2rem 3rem ;
+        width: 100%;
+        top:0;
+        left:0;
+        background-color: transparent;
+        animation: fromRight2 0.5s ease-in;
+        z-index: 100;
+    }
+    nav.active{
+        background-color: var(--white);
+        animation: fromLeft2 0.5s ease-in;
+        z-index: 140;
+    }
+  
+    .hamburger-menu{
+        background-color: transparent;
+        border: none;
+        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        z-index: 150;
+        top: -0.05rem;
+        left: -1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hamburger-menu svg{
+        width: 100%;
+        height: 100%;
+    }
+   
+    header.close .hamburger-menu{
+        top: -0.6rem;
+        left: -0.7rem;
+    }
+    header.close .hamburger-menu .close{
+        display: block;
+        fill: var(--black);
+        animation: text-clip 1s 0.3s cubic-bezier(0.5, 0, 0.1, 1) both;
+    }
+    header.close .hamburger-menu .hamburger{
+        display: none;
+    }
+    header .hamburger-menu .close{
+        display: none;
+    }
+    header .hamburger-menu .hamburger{
+        display: block;
+    }
+    nav.active + .hamburger-menu{
+        top: 0.95rem;
+    }
+    nav .flex{
+        display: none;
+    }
+     nav.active  .flex{
+        display: flex;
+        position: absolute;
+        z-index: 101;
+        color: var(--black);
+        left: 5rem;
+        top: 50%;
+       
+     }
+     nav.active .flex{
+        animation: text-clip 1s 0.3s cubic-bezier(0.5, 0, 0.1, 1) both;
+     }
+     .backdrop{
+        position: fixed;
+        left:0;
+        top:0%;
+        width:100%;
+        height:100vh;
+        z-index: 98;
+        background-color: rgba(0,0,0,0.4);
+        cursor: default;
+        display: none;
+    }
+    header.close .backdrop{
+        display: block;
+    }
+}
+@keyframes fromLeft2 {
+    0% {
+      transform: translateX(-999px);
+      opacity: 0; 
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+     }
+}
+@keyframes fromRight2 {
+    0% {
+      transform: translateX(0);
+      opacity: 1; 
+    }
+    100% {
+      transform: translateX(-999px);
+      opacity: 0;
+     }
+}
+   
+
+@keyframes next1 {
+    from {
+      
+       left: 0%;
+    }
+    to{
+     left: -100%;
+    }
+}
+@keyframes next2 {
+    from {
+
+       left:100%;
+    }
+    to{
+ 
+      left: 0%;
+    }
+}
+@keyframes prev1{
+    from {
+     
+       left: 0%;
+     }
+    to{
+      
+     left: 100%;
+    }
+}
+@keyframes prev2 {
+    from {
+        left:-100%;
+    }
+    to{
+        left: 0%;
+    }
+}
+
+
+.textAnimation {
+    animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+    -webkit-animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both; 
+}
+  
+
+@keyframes text-clip {
+    from {
+      clip-path: polygon(0% 0%, 0 100%, 0 100%, 0% 0%); }
+    to {
+      clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0%); } 
+}
+.left-animation {
+    animation: fromLeft 0.5s ease-in;
+    -webkit-animation: fromLeft 0.5s ease-in; }
+  
+@keyframes fromLeft {
+    0% {
+      transform: translateX(-5%);
+      opacity: 0; 
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+     }
+}
+  
+.right-animation {
+    animation: fromRight 0.5s ease-in;
+    -webkit-animation: fromRight 0.5s ease-in;
+ }
+
+@keyframes fromRight {
+    0% {
+      transform: translateX(10%);
+      opacity: 0; 
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1; } 
+}
+  
+.bottom-animation {
+    animation: fromBottom 0.5s ease-in;
+    -webkit-animation: fromBottom 0.5s ease-in;
+}
+  
+@keyframes fromBottom {
+    0% {
+      transform: translateY(20%);
+      opacity: 0; 
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1; 
+    } 
 }
