@@ -26,7 +26,6 @@ const data=[
 
 ]
 let currentIndex =0
-const imgs= document.querySelectorAll('.img')
 const heading= document.querySelector('#heading')
 const description= document.querySelector('#description')
 const btnContainer= document.querySelector('.btn')
@@ -52,6 +51,7 @@ function showData(move='right'){
 }
 window.addEventListener('DOMContentLoaded',function(){
     showData()
+
 })
 function autoSliding(){
     interval = setInterval(timer, 4000)
